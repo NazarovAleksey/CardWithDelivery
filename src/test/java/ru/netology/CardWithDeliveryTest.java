@@ -88,6 +88,6 @@ public class CardWithDeliveryTest {
         form.$("[data-test-id=name] input").setValue("Иван Иванов");
         form.$("[data-test-id=phone] input").setValue("+71234567890");
         form.$$("[role=button]").find(exactText("Забронировать")).click();
-        form.$("[data-test-id=agreement]").shouldHave(text("Я соглашаюсь с условиями обработки и использования моих персональных данных"));;
+        form.$(".checkbox_theme_alfa-on-white.input_invalid").shouldHave(text("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
     }
 }
