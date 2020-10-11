@@ -1,6 +1,10 @@
 package ru.netology;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -22,6 +26,15 @@ public class CardWithDeliveryTest {
     void setUp() {
         open("http://localhost:9999");
         form = $(".form");
+    }
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll(){
+        SelenideLogger.removeListener("AllureSelenide");
     }
 
     @Test
